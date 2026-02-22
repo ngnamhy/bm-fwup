@@ -1,0 +1,6 @@
+dataset: 
+    accidents: 
+        threshold: [80, 75, 70, 65, 60, 55, 50]
+    connect: 
+        threshold: [98, 97, 96, 94, 92, 91, 90]
+algorithm: [bmfwup, wunminer]

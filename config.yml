@@ -1,0 +1,5 @@
+algorithm: wunminer
+dataset: connect
+input_path: /home/ngnamhy/nckh/dataset/Dataset
+severity: debug
+threshold: 96

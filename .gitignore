@@ -1,0 +1,22 @@
+# Python virtual environment
+experimental/venv/
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Build directories
+cmake-build-*/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+app.log
+
+# Results & outputs
+experimental/results/*.csv
+experimental/plots/*.png
