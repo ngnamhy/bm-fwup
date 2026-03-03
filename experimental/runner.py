@@ -4,6 +4,7 @@ import subprocess
 import csv
 from pathlib import Path
 import logging
+from datetime import datetime
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,10 +17,14 @@ working_dir = Path(__file__).parent
 config_path = working_dir / "config.yml"
 list_path = working_dir / "scenarios.yml"
 binary_path = working_dir / "maximal"
-result_dir = working_dir / "results"
 
-# Create results directory
-result_dir.mkdir(exist_ok=True)
+# Create runs directory with timestamp
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+run_dir = working_dir / "runs" / timestamp
+result_dir = run_dir / "results"
+result_dir.mkdir(parents=True, exist_ok=True)
+
+logging.info(f"Run directory: {run_dir}")
 
 # Verify binary exists
 if not binary_path.exists():
@@ -40,12 +45,9 @@ with open(list_path, "r", encoding="utf-8") as f:
 datasets = list_cfg["dataset"]
 algorithms = list_cfg["algorithm"]
 
-from datetime import datetime
-
 # Run benchmarks
 for dataset_name, dataset_info in datasets.items():
-    current_datetime = datetime.now() 
-    out_csv = result_dir / f"{dataset_name}_{current_datetime}.csv"
+    out_csv = result_dir / f"{dataset_name}.csv"
     
     # Create new CSV file
     if out_csv.exists(): 

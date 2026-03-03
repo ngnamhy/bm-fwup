@@ -9,10 +9,19 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# Setup directories
-result_dir = Path("results")
-out_dir = Path("plots")
+# Setup directories - find the latest run
+runs_dir = Path("runs")
+if not runs_dir.exists() or not any(runs_dir.iterdir()):
+    logging.error("No runs found in runs/ directory. Please run runner.py first.")
+    exit(1)
+
+# Get the latest run directory
+latest_run = max(runs_dir.iterdir(), key=lambda p: p.stat().st_mtime)
+result_dir = latest_run / "results"
+out_dir = latest_run / "plots"
 out_dir.mkdir(exist_ok=True)
+
+logging.info(f"Using run: {latest_run.name}")
 
 # Plot styling
 markers = ["o", "s", "D", "^", "v", "x", "*", "P", "H"]

@@ -1,0 +1,4 @@
+algorithm,dataset,threshold,check_count,fwups_size,estimated_algo_mem,minwus,runtime
+BMFWUP,retail,1,2332,2247,226,30098.565744908632,691
+WUNMiner,retail,1,2332,2247,211,30098.565744908632,2087
+BMFWUP,retail,0.8,9209,6820,728,24078.85259592691,1905

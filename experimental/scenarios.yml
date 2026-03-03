@@ -1,6 +1,8 @@
 dataset: 
-  Sale_Fact_sync:
-    threshold: [0.4, 0.37, 0.35, 0.32, 0.3, 0.27]
+  retail:
+    threshold: [1, 0.8, 0.6, 0.4, 0.2, 0.1, 0.008]
+  #Sale_Fact_sync:
+  #  threshold: [0.4, 0.37, 0.35, 0.32, 0.3, 0.27]
   #retail:
   #  threshold: [5, 4, 3]
   # accidents: 
