@@ -40,9 +40,12 @@ with open(list_path, "r", encoding="utf-8") as f:
 datasets = list_cfg["dataset"]
 algorithms = list_cfg["algorithm"]
 
+from datetime import datetime
+
 # Run benchmarks
 for dataset_name, dataset_info in datasets.items():
-    out_csv = result_dir / f"{dataset_name}.csv"
+    current_datetime = datetime.now() 
+    out_csv = result_dir / f"{dataset_name}_{current_datetime}.csv"
     
     # Create new CSV file
     if out_csv.exists(): 
@@ -75,7 +78,6 @@ for dataset_name, dataset_info in datasets.items():
                         cwd=working_dir, 
                         capture_output=True, 
                         text=True,
-                        timeout=600  # 10 minute timeout
                     )
                     
                     # Parse JSON from stdout

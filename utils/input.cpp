@@ -28,8 +28,8 @@ namespace utils {
             throw std::runtime_error("Cannot open file: " + pro_file);
         }
 
-        // index = item_id (1-based)
-        std::vector<double> item_weights(1); // dummy index 0
+        // index = item_id (0-based)
+        std::vector<double> item_weights;
         double w;
         while (pro_stream >> w) {
             item_weights.push_back(w);
@@ -56,7 +56,7 @@ namespace utils {
 
         int tx_id, item_id, quantity;
         while (hui_stream >> tx_id >> item_id >> quantity) {
-            if (item_id <= 0 || item_id >= (int)item_weights.size()) {
+            if (item_id < 0 || item_id >= (int)item_weights.size()) {
                 throw std::runtime_error("Invalid item_id in hui file");
             }
 

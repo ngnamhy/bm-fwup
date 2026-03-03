@@ -1,5 +1,5 @@
 algorithm: wunminer
-dataset: connect
+dataset: Sale_Fact_sync
 input_path: /home/ngnamhy/nckh/dataset/Dataset
 severity: debug
-threshold: 2.5e-09
+threshold: 0.27
